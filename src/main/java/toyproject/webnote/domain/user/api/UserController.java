@@ -35,13 +35,13 @@ public class UserController {
         return userService.login(request.getEmail(), request.getPassword(), response);
     }
 
-    @GetMapping("login-pass")
+    @GetMapping("/login-pass")
     @ResponseBody
     public String loginSuccess() {
         return "login success";
     }
 
-    @GetMapping("confirm-duplication/{email}")
+    @GetMapping("/confirm-duplication/{email}")
     @ResponseBody
     public ResponseEntity<Boolean> confirmDuplication(@PathVariable String email) {
         return new ResponseEntity<>(userService.isUniqueEmail(email), HttpStatus.OK);
