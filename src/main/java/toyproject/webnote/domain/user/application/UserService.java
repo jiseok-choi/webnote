@@ -12,6 +12,7 @@ import toyproject.webnote.global.security.filter.jwt.JwtAuthenticationProvider;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,5 +51,10 @@ public class UserService {
         response.addCookie(cookie);
 
         return member;
+    }
+
+    public Boolean isUniqueEmail(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        return optionalUser.isEmpty();
     }
 }

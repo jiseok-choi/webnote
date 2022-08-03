@@ -41,4 +41,10 @@ public class UserController {
         return "login success";
     }
 
+    @GetMapping("confirm-duplication/{email}")
+    @ResponseBody
+    public ResponseEntity<Boolean> confirmDuplication(@PathVariable String email) {
+        return new ResponseEntity<>(userService.isUniqueEmail(email), HttpStatus.OK);
+    }
+
 }
